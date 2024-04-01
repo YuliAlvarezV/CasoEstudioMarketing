@@ -10,7 +10,7 @@ from sklearn.preprocessing import MinMaxScaler
 import joblib
 
 ###### para ejecutar sql y conectarse a bd ###
-conn=sql.connect('C:\marketing\CasoEstudioMarketing\db_movies') ### crear cuando no existe el nombre de cd  y para conectarse cuando sí existe.
+conn=sql.connect('C:\\marketing\\Datos\\db_movies') ### crear cuando no existe el nombre de cd  y para conectarse cuando sí existe.
 cur=conn.cursor() ###para funciones que ejecutan sql en base de datos
 
 
@@ -153,6 +153,8 @@ movies2.to_sql('movies2',conn, if_exists='replace' )
 movies3= movies2.drop(columns=['title','index','fecha', 'movieId'])
 
 movies3.to_sql('movies3',conn, if_exists='replace' )
+
+joblib.dump(movies3,"CasoEstudioMarketing\\movies3.joblib") ### para utilizar en segundos modelos
 
 ##Utilizar tabla de rating_final para los modelos
 rating_final= pd.read_sql('select * from rating_final', conn)
