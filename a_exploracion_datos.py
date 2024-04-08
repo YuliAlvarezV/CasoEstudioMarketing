@@ -154,7 +154,7 @@ movies3= movies2.drop(columns=['title','index','fecha', 'movieId'])
 
 movies3.to_sql('movies3',conn, if_exists='replace' )
 
-joblib.dump(movies3,"CasoEstudioMarketing\\movies3.joblib") ### para utilizar en segundos modelos
+### joblib.dump(movies3,"CasoEstudioMarketing\\movies3.joblib") ### para utilizar en segundos modelos
 
 ##Utilizar tabla de rating_final para los modelos
 rating_final= pd.read_sql('select * from rating_final', conn)
